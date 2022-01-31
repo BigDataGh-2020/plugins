@@ -147,7 +147,7 @@ class Marker implements MapsObject {
     this.visible = true,
     this.zIndex = 0.0,
     this.tag = "",
-    this.properties = {},
+    this.properties = const {},
     this.onTap,
     this.onDrag,
     this.onDragStart,
