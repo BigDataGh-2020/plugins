@@ -31,6 +31,8 @@ class Circle implements MapsObject<Circle> {
     this.strokeWidth = 10,
     this.visible = true,
     this.zIndex = 0,
+    this.tag = "",
+    this.properties,
     this.onTap,
   });
 
@@ -74,6 +76,12 @@ class Circle implements MapsObject<Circle> {
   /// earlier, and thus appearing to be closer to the surface of the Earth.
   final int zIndex;
 
+  /// Allows you to categorize the polyline into a group
+  final String tag;
+
+  /// Add other identifiable properties to the marker
+  final Map properties;
+
   /// Callbacks to receive tap events for circle placed on this map.
   final VoidCallback? onTap;
 
@@ -88,6 +96,8 @@ class Circle implements MapsObject<Circle> {
     int? strokeWidthParam,
     bool? visibleParam,
     int? zIndexParam,
+    String? tagParam,
+    Map? propertiesParam,
     VoidCallback? onTapParam,
   }) {
     return Circle(
@@ -100,6 +110,8 @@ class Circle implements MapsObject<Circle> {
       strokeWidth: strokeWidthParam ?? strokeWidth,
       visible: visibleParam ?? visible,
       zIndex: zIndexParam ?? zIndex,
+      tag: tagParam ?? tag,
+      properties: propertiesParam ?? properties,
       onTap: onTapParam ?? onTap,
     );
   }
@@ -126,6 +138,8 @@ class Circle implements MapsObject<Circle> {
     addIfPresent('strokeWidth', strokeWidth);
     addIfPresent('visible', visible);
     addIfPresent('zIndex', zIndex);
+    addIfPresent('tag', tag);
+    addIfPresent('properties', properties);
 
     return json;
   }
@@ -143,6 +157,8 @@ class Circle implements MapsObject<Circle> {
         strokeColor == typedOther.strokeColor &&
         strokeWidth == typedOther.strokeWidth &&
         visible == typedOther.visible &&
+        tag == typedOther.tag &&
+        properties == typedOther.properties &&
         zIndex == typedOther.zIndex;
   }
 
