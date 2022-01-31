@@ -32,7 +32,7 @@ class Circle implements MapsObject<Circle> {
     this.visible = true,
     this.zIndex = 0,
     this.tag = "",
-    this.properties,
+    this.properties = {},
     this.onTap,
   });
 

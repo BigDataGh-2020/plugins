@@ -37,7 +37,7 @@ class Polyline implements MapsObject {
     this.width = 10,
     this.zIndex = 0,
     this.tag = "",
-    this.properties,
+    this.properties = {},
     this.onTap,
   });
 
