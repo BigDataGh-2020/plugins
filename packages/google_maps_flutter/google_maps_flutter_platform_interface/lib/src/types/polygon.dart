@@ -33,6 +33,8 @@ class Polygon implements MapsObject {
     this.strokeWidth = 10,
     this.visible = true,
     this.zIndex = 0,
+    this.tag = '',
+    this.properties,
     this.onTap,
   });
 
@@ -90,6 +92,12 @@ class Polygon implements MapsObject {
   /// earlier, and thus appearing to be closer to the surface of the Earth.
   final int zIndex;
 
+  /// Allows you to categorize the polygon into a group
+  final String tag;
+
+  /// Add other identifiable properties to the marker
+  final Map properties;
+
   /// Callbacks to receive tap events for polygon placed on this map.
   final VoidCallback? onTap;
 
@@ -105,6 +113,8 @@ class Polygon implements MapsObject {
     int? strokeWidthParam,
     bool? visibleParam,
     int? zIndexParam,
+    String? tagParam,
+    Map? propertiesParam,
     VoidCallback? onTapParam,
   }) {
     return Polygon(
@@ -119,6 +129,8 @@ class Polygon implements MapsObject {
       visible: visibleParam ?? visible,
       onTap: onTapParam ?? onTap,
       zIndex: zIndexParam ?? zIndex,
+      tag: tagParam ?? tag,
+      properties: propertiesParam ?? properties
     );
   }
 
@@ -145,6 +157,8 @@ class Polygon implements MapsObject {
     addIfPresent('strokeWidth', strokeWidth);
     addIfPresent('visible', visible);
     addIfPresent('zIndex', zIndex);
+    addIfPresent('tag', tag);
+    addIfPresent('properties', properties);
 
     if (points != null) {
       json['points'] = _pointsToJson();
@@ -171,6 +185,8 @@ class Polygon implements MapsObject {
         visible == typedOther.visible &&
         strokeColor == typedOther.strokeColor &&
         strokeWidth == typedOther.strokeWidth &&
+        tag == typedOther.tag &&
+        properties == typedOther.properties &&
         zIndex == typedOther.zIndex;
   }
 
